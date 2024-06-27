@@ -49,7 +49,7 @@ public class StatisticsCommand {
   }
 
   public void getTransactionByPeriod(String format) {
-    String date = Prompt.input("연월?");
+    String date = Prompt.input(format);
     printExpenseByDate(date);
   }
 
