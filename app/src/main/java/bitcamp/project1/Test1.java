@@ -11,7 +11,7 @@ public class Test1 {
 
     static void m3(String[] mainMenus) {
         System.out.println("오호라!!!");
-        for (String menu : mainMenus) {
+        for(String menu : mainMenus) {
             System.out.println(menu);
         }
     }
@@ -26,5 +26,8 @@ public class Test1 {
                 TotlaPrice(수입-지출) 출력 */},
             {}
     };
+
+
+
 
 }
