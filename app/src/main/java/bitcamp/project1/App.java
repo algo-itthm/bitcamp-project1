@@ -3,17 +3,21 @@
  */
 package bitcamp.project1;
 
+import bitcamp.project1.command.CategoryCommand;
 import bitcamp.project1.command.ExpenseCommand;
 import bitcamp.project1.util.Prompt;
+import org.checkerframework.checker.units.qual.C;
 
 public class App {
     ExpenseCommand expenseCommand = new ExpenseCommand();
+
+    CategoryCommand categoryCommand = new CategoryCommand();
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
     String[][] subMenus = {
         {"등록", "조회", "변경", "삭제"},
         {"등록", "조회", "변경", "삭제"},
-        {"등록", "목록", "변경", "삭제"},
+        {"등록", "목록", "조회", "변경", "삭제"},
         {"이번달 조회", "월별 조회", "연도별 조회", "카테고리별 조회"}
     };
 
@@ -119,7 +123,7 @@ public class App {
                             System.out.println("조회입니다.");
                             break;
                         case "카테고리":
-                            System.out.println("카테고리입니다.");
+                            categoryCommand.executeBoardCommand(subMenuTitle);
                             break;
                         default:
                             System.out.printf("%s 메뉴의 명령을 처리할 수 없습니다.\n", menuTitle);

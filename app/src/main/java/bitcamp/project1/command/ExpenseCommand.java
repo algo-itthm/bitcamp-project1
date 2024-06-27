@@ -32,7 +32,7 @@ public class ExpenseCommand {
     Expense expense = new Expense();
     expense.setDate(Prompt.input("날짜?"));
     expense.setContent(Prompt.input("금액?"));
-    expense.setContent(Prompt.input("분류?"));
+    expense.setContent(Prompt.input("분류?")); //추후 작업
     expense.setContent(Prompt.input("항목?"));
     expense.setNo(Expense.getNextSeqNo());
     expenseList.add(expense);
