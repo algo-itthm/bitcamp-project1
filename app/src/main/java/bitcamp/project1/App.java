@@ -115,7 +115,6 @@ public class App {
                     switch (menuTitle) {
                         case "수입":
                             incomeCommand.executeIncomeCommand(subMenuTitle);
-                            System.out.println("수입입니다.");
                             break;
                         case "지출":
                             expenseCommand.executeExpenseCommand(subMenuTitle);

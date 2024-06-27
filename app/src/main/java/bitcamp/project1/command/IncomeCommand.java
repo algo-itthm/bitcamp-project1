@@ -43,22 +43,25 @@ public class IncomeCommand {
 
     public void viewIncome() {
         String incomeDate = Prompt.input("날짜?");
-        System.out.println("번호 항목 금액");
 
         for (Object obj : incomeList.toArray()) {
             Income income = (Income) obj;
-            if(income.getDate().equals(incomeDate)) {
+            if (income.getDate().equals(incomeDate)) {
+                System.out.println("번호 항목 금액");
                 System.out.printf("%d %s %d\n",
-                        income.getNo(), "테스트", income.getAmount());
+                        income.getNo(), "항목", income.getAmount());
+            } else{
+                System.out.println("잘못된 날짜입니다.");
+                return;
             }
         }
 
         int incomeNo = Prompt.inputInt("번호(0은 이전)?");
-        if(incomeNo == 0) {
+        Income income = (Income) incomeList.get(incomeList.indexOf(new Income(incomeNo)));
+        if (incomeNo == 0) {
             return;
         }
 
-        Income income = (Income) incomeList.get(incomeList.indexOf(new Income(incomeNo)));
         if (income == null) {
             System.out.println("없는 수입입니다.");
             return;
@@ -71,21 +74,20 @@ public class IncomeCommand {
     }
 
 
-
     public void updateIncome() {
         String incomeDate = Prompt.input("날짜?");
         System.out.println("번호 항목 금액");
 
         for (Object obj : incomeList.toArray()) {
             Income income = (Income) obj;
-            if(income.getDate().equals(incomeDate)) {
+            if (income.getDate().equals(incomeDate)) {
                 System.out.printf("%d %s %d\n",
                         income.getNo(), "테스트", income.getAmount());
             }
         }
 
         int incomeNo = Prompt.inputInt("번호(0은 이전)?");
-        if(incomeNo == 0) {
+        if (incomeNo == 0) {
             return;
         }
 

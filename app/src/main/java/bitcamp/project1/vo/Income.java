@@ -3,11 +3,11 @@ package bitcamp.project1.vo;
 import java.util.Objects;
 
 public class Income {
-    int no;
-    String date; //날짜
-    int amount; //금액
-    Category category; //분류
-    String content; //항목
+    private int no;
+    private String date; //날짜
+    private int amount; //금액
+    private Category category; //분류
+    private String content; //항목
     private static int seqNo;
 
     public static int getSeqNo() {
