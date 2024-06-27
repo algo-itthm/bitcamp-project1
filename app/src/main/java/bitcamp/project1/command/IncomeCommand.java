@@ -1,6 +1,7 @@
 package bitcamp.project1.command;
 
 import bitcamp.project1.util.LinkedList;
+import bitcamp.project1.vo.Category;
 import bitcamp.project1.vo.Expense;
 import bitcamp.project1.vo.Income;
 import bitcamp.project1.util.Prompt;
@@ -8,7 +9,7 @@ import bitcamp.project1.util.Prompt;
 public class IncomeCommand {
 
     LinkedList incomeList = new LinkedList();
-
+    LinkedList categoryList;
     public void executeIncomeCommand(String command) {
         System.out.printf("[%s]\n", command);
 
@@ -158,5 +159,24 @@ public class IncomeCommand {
                 System.out.println("없는 수입입니다.");
             }
         }
+//    }
+//    private void addCategory(Income income) {
+//        while (true) {
+//            int categoryNo = Prompt.inputInt("추가할 카테고리 번호?(종료:0)");
+//            if (categoryNo == 0) {
+//                break;
+//            }
+//            Category category = (Category) categoryList.get(categoryList.indexOf(new Category(categoryNo)));
+//            if (category == null) {
+//                System.out.println("없는 팀원입니다.");
+//                continue;
+//            }
+//            if (income.getCategory().contains(category)) {
+//                System.out.printf("%s 은 현재 카테고리입니다.\n", category.getTitle());
+//                continue;
+//            }
+//            income.getCategory().add(category);
+//            System.out.printf("%s 을 추가했습니다.\n", category.getTitle());
+//        }
     }
 }
