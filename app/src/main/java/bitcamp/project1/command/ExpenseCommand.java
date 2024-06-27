@@ -118,6 +118,10 @@ public class ExpenseCommand {
     }
   }
 
+  public LinkedList getExpenseList() {
+    return expenseList;
+  }
+
   private void printExpensesByDate(String expenseDate) {
     for (Object obj : expenseList.toArray()) {
       Expense expense = (Expense) obj;

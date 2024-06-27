@@ -5,12 +5,14 @@ package bitcamp.project1;
 
 import bitcamp.project1.command.CategoryCommand;
 import bitcamp.project1.command.ExpenseCommand;
+import bitcamp.project1.command.StatisticsCommand;
 import bitcamp.project1.util.Prompt;
 import org.checkerframework.checker.units.qual.C;
 
 public class App {
     ExpenseCommand expenseCommand = new ExpenseCommand();
     CategoryCommand categoryCommand = new CategoryCommand();
+    StatisticsCommand statisticsCommand = new StatisticsCommand(expenseCommand.getExpenseList());
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
     String[][] subMenus = {
@@ -119,7 +121,7 @@ public class App {
                             expenseCommand.executeExpenseCommand(subMenuTitle);
                             break;
                         case "조회":
-                            System.out.println("조회입니다.");
+                            statisticsCommand.executeExpenseCommand(subMenuTitle);
                             break;
                         case "카테고리":
                             categoryCommand.executeBoardCommand(subMenuTitle);
