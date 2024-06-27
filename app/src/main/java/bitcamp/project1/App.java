@@ -3,10 +3,11 @@
  */
 package bitcamp.project1;
 
+import bitcamp.project1.command.ExpenseCommand;
 import bitcamp.project1.util.Prompt;
 
 public class App {
-
+    ExpenseCommand expenseCommand = new ExpenseCommand();
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
     String[][] subMenus = {
@@ -109,7 +110,7 @@ public class App {
                 } else {
                     switch (menuTitle) {
                         case "수입":
-                            System.out.println("수입입니다.");
+                            expenseCommand.executeExpenseCommand(subMenuTitle);
                             break;
                         case "지출":
                             System.out.println("지출입니다.");
