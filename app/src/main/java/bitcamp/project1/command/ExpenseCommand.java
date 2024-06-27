@@ -109,10 +109,6 @@ public class ExpenseCommand {
     }
 
     Expense deletedExpense = (Expense) expenseList.get(expenseList.indexOf(new Expense(expenseNo, expenseDate)));
-    if (deletedExpense == null) {
-      System.out.println("없는 지출입니다.");
-      return;
-    }
 
     if (deletedExpense != null) {
       expenseList.remove(expenseList.indexOf(deletedExpense));
