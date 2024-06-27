@@ -9,8 +9,11 @@ public class Test1 {
         System.out.println("오호라!!!!");
     }
 
-    static void m3() {
+    static void m3(String[] mainMenus) {
         System.out.println("오호라!!!");
+        for(String menu : mainMenus) {
+            System.out.println(menu);
+        }
     }
 
     //"income(수입)" or "expense(지출)”
@@ -21,6 +24,8 @@ public class Test1 {
             {"수입조회", "지출조회", "수입/지출 조회", "이전"},
             {}
     };
+
+
 
 
 }
