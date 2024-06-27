@@ -17,11 +17,13 @@ public class Test1 {
     }
 
     //"income(수입)" or "expense(지출)”
-    String[] mainMenus = new String[]{"수입", "지출", "조회", "종료"};
+    String[] mainMenus = new String[]{"수입", "지출", "수입/지출 조회", "종료"};
+
     String[][] subMenus = {
             {"등록", "목록", "변경", "삭제", "이전"},
             {"등록", "목록", "변경", "삭제", "이전"},
-            {"수입조회", "지출조회", "수입/지출 조회", "이전"},
+            {/*  Ansi Code 사용. 수입과 지출 글씨 색 다르게 표현
+                TotlaPrice(수입-지출) 출력 */},
             {}
     };
 
