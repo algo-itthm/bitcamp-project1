@@ -5,4 +5,8 @@ public class Test1 {
         System.out.println("changed");
         
     }
+
+    static void m3() {
+      System.out.println("오호라!!!");
+    }
 }
