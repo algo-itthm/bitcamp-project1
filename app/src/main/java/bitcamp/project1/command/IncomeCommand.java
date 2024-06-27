@@ -8,7 +8,7 @@ import bitcamp.project1.util.Prompt;
 public class IncomeCommand {
 
     LinkedList incomeList = new LinkedList();
-
+    String[] categorys = new String[]{"월급","용돈","기타"};
     public void executeIncomeCommand(String command) {
         System.out.printf("[%s]\n", command);
 
@@ -33,7 +33,9 @@ public class IncomeCommand {
         Income income = new Income();
         income.setDate(Prompt.input("날짜?"));
         income.setAmount(Prompt.inputInt("금액?"));
+
 //        income.setCategory(Prompt.input("분류?"));
+
         income.setContent(Prompt.input("항목?"));
         income.setNo(income.getSeqNo());
         incomeList.add(income);
