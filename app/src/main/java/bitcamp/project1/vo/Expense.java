@@ -13,8 +13,9 @@ public class Expense {
 
   }
 
-  public Expense(int no) {
+  public Expense(int no, String date) {
     this.no = no;
+    this.date = date;
   }
 
   private static int seqNo;
@@ -70,7 +71,7 @@ public class Expense {
     if (o == null || getClass() != o.getClass())
       return false;
     Expense expense = (Expense) o;
-    return no == expense.no;
+    return no == expense.no && Objects.equals(date, expense.date);
   }
 
   @Override
