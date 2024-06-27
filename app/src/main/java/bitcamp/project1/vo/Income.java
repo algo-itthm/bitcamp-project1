@@ -31,12 +31,12 @@ public class Income {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Income income = (Income) object;
-        return no == income.no && amount == income.amount && Objects.equals(category, income.category);
+        return no == income.no;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(no, amount, category);
+        return Objects.hashCode(no);
     }
 
     public int getNo() {
