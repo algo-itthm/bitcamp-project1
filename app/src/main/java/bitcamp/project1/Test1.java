@@ -9,6 +9,7 @@ public class Test1 {
     }
 
     static void m3() {
-      System.out.println("오호라!!!");
+        System.out.println("오호라!!!");
+        m1();
     }
 }
