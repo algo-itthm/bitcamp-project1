@@ -40,43 +40,46 @@ public class IncomeCommand {
         System.out.println("등록했습니다.");
     }
 
-
     public void viewIncome() {
         String incomeDate = Prompt.input("날짜?");
 
-        System.out.println("번호 항목 금액");
         int count = 0;
         for (Object obj : incomeList.toArray()) {
             Income income = (Income) obj;
             if (income.getDate().equals(incomeDate)) {
+                if (count == 0) {
+                    System.out.println("번호 항목 금액");
+                }
                 count++;
                 System.out.printf("%d %s %d\n",
                         income.getNo(), "항목", income.getAmount());
             }
         }
-        if (count==0){
+
+        if (count == 0) {
             System.out.println("없는 날짜입니다.");
             return;
         }
 
-        while(true){
-        int incomeNo = Prompt.inputInt("번호(0은 이전)?");
-        Income income = (Income) incomeList.get(incomeList.indexOf(new Income(incomeNo)));
-        if (incomeNo == 0) {
-            return;
-        }
+        while (true) {
+            int incomeNo = Prompt.inputInt("번호(0은 이전)?");
+            if (incomeNo == 0) {
+                return;
+            }
 
-        if (income == null) {
-            System.out.println("없는 수입입니다.");
-            return;
-        }
+            Income income = (Income) incomeList.get(incomeList.indexOf(new Income(incomeNo)));
+            if (income == null) {
+                System.out.println("없는 수입입니다.");
+                return;
+            }
 
-        System.out.printf("날짜: %s\n", income.getDate());
-        System.out.printf("금액: %s\n", income.getAmount());
-        System.out.printf("분류: %s\n", "테스트");
-        System.out.printf("항목: %s\n", income.getContent());
+            System.out.printf("날짜: %s\n", income.getDate());
+            System.out.printf("금액: %s\n", income.getAmount());
+            System.out.printf("분류: %s\n", "테스트");
+            System.out.printf("항목: %s\n", income.getContent());
         }
     }
+
 
 
     public void updateIncome() {
@@ -128,7 +131,7 @@ public class IncomeCommand {
 
         Income deletedIncome = (Income) incomeList.get(incomeList.indexOf(new Income(incomeNo)));
         if (deletedIncome == null) {
-            System.out.println("없는 수입입니다.");
+            System.out.println("없는 번호 입니다.");
             return;
         }
 
