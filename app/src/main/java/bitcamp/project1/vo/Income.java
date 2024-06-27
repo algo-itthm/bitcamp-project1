@@ -4,10 +4,19 @@ import java.util.Objects;
 
 public class Income {
     int no;
-    String date;
-    int amount;
-    Category category;
-    String content;
+    String date; //날짜
+    int amount; //금액
+    Category category; //분류
+    String content; //항목
+    private static int seqNo;
+
+    public static int getSeqNo() {
+        return ++seqNo;
+    }
+
+    public static void setSeqNo(int seqNo) {
+        Income.seqNo = seqNo;
+    }
 
     public Income() {
 
