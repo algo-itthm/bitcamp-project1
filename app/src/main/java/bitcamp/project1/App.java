@@ -4,14 +4,15 @@
 package bitcamp.project1;
 
 import bitcamp.project1.command.CategoryCommand;
+import bitcamp.project1.command.ExpenseCommand;
 import bitcamp.project1.command.IncomeCommand;
 import bitcamp.project1.util.Prompt;
 import org.checkerframework.checker.units.qual.C;
 
 public class App {
-
+    ExpenseCommand expenseCommand = new ExpenseCommand();
     CategoryCommand categoryCommand = new CategoryCommand();
-    IncomeCommand incomeCommand = new IncomeCommand();
+
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
     String[][] subMenus = {
         {"등록", "조회", "변경", "삭제"},
@@ -113,11 +114,10 @@ public class App {
                 } else {
                     switch (menuTitle) {
                         case "수입":
-                            incomeCommand.executeIncomeCommand(subMenuTitle);
                             System.out.println("수입입니다.");
                             break;
                         case "지출":
-                            System.out.println("지출입니다.");
+                            expenseCommand.executeExpenseCommand(subMenuTitle);
                             break;
                         case "조회":
                             System.out.println("조회입니다.");
