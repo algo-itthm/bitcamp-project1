@@ -10,7 +10,6 @@ import org.checkerframework.checker.units.qual.C;
 
 public class App {
     ExpenseCommand expenseCommand = new ExpenseCommand();
-
     CategoryCommand categoryCommand = new CategoryCommand();
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
@@ -114,10 +113,10 @@ public class App {
                 } else {
                     switch (menuTitle) {
                         case "수입":
-                            expenseCommand.executeExpenseCommand(subMenuTitle);
+                            System.out.println("수입입니다.");
                             break;
                         case "지출":
-                            System.out.println("지출입니다.");
+                            expenseCommand.executeExpenseCommand(subMenuTitle);
                             break;
                         case "조회":
                             System.out.println("조회입니다.");

@@ -6,7 +6,7 @@ public class Expense {
   private int no;
   private String date;
   private int amount;
-//  private Category category;
+  private Category category;
   private String content;
 
   public Expense() {
@@ -47,13 +47,13 @@ public class Expense {
     this.amount = amount;
   }
 
-//  public Category getCategory() {
-//    return category;
-//  }
-//
-//  public void setCategory(Category category) {
-//    this.category = category;
-//  }
+  public Category getCategory() {
+    return category;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
+  }
 
   public String getContent() {
     return content;
@@ -70,7 +70,7 @@ public class Expense {
     if (o == null || getClass() != o.getClass())
       return false;
     Expense expense = (Expense) o;
-    return no == expense.no && Objects.equals(date, expense.date);
+    return no == expense.no;
   }
 
   @Override

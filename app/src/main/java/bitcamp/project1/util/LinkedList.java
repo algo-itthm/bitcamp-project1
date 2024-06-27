@@ -100,7 +100,7 @@ public class LinkedList extends AbstractList {
       arr[i] = cursor.value;
       cursor = cursor.next;
     }
-    java.util.LinkedList l;
+
     return arr;
   }
 
