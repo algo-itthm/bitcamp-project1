@@ -123,7 +123,7 @@ public class App {
                             System.out.println("조회입니다.");
                             break;
                         case "카테고리":
-                            categoryCommand.executeBoardCommand(subMenuTitle);
+                            categoryCommand.executeCategoryCommand(subMenuTitle);
                             break;
                         default:
                             System.out.printf("%s 메뉴의 명령을 처리할 수 없습니다.\n", menuTitle);

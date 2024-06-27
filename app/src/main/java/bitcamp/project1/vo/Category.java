@@ -57,4 +57,13 @@ public class Category {
     this.title = title;
   }
 
+  public String getTransactionType() {
+    return transactionType;
+  }
+
+  public void setTransactionType(String transactionType) {
+    this.transactionType = transactionType;
+  }
+
+
 }
