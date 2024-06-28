@@ -14,7 +14,7 @@ import org.checkerframework.checker.units.qual.C;
 
 public class App {
     CategoryCommand categoryCommand = new CategoryCommand();
-    IncomeCommand incomeCommand = new IncomeCommand(categoryCommand.getIncomeCategoryList());
+    IncomeCommand incomeCommand = new IncomeCommand(categoryCommand);
     ExpenseCommand expenseCommand = new ExpenseCommand(categoryCommand);
     StatisticsCommand statisticsCommand = new StatisticsCommand(incomeCommand.getIncomeList(), expenseCommand.getExpenseList());
 
