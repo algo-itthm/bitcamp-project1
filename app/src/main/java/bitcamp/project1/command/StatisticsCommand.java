@@ -91,10 +91,10 @@ public class StatisticsCommand {
   public void getTransactionThisMonth() {
     LocalDateTime now = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
-    String formattedNow = now.format(formatter);
+    String thisMonth = now.format(formatter);
 
-    int incomeSum = getIncomeSum(formattedNow);
-    int expenseSum = getExpenseSum(formattedNow);
+    int incomeSum = getIncomeSum(thisMonth);
+    int expenseSum = getExpenseSum(thisMonth);
 
     System.out.printf("총수입 : %,d원\n", incomeSum);
     System.out.printf("총지출 : %,d원\n", expenseSum);
@@ -102,8 +102,8 @@ public class StatisticsCommand {
     System.out.println("-------------------------");
     System.out.println("일자 구분 항목 금액");
 
-    printIncomeByDate(formattedNow);
-    printExpenseByDate(formattedNow);
+    printIncomeByDate(thisMonth);
+    printExpenseByDate(thisMonth);
   }
 
   public void getTransactionByPeriod(String format, int len) {
