@@ -46,7 +46,14 @@ public class IncomeCommand {
         }
 
         Income income = new Income();
-        income.setDate(Prompt.input("날짜?"));
+        String date = Prompt.input("날짜?");
+        while(date.length() != 8) {
+            System.out.println("8자리로 입력해주세요.");
+            date = Prompt.input("날짜?");
+        }
+        income.setDate(date);
+
+
         income.setAmount(Prompt.inputInt("금액?"));
 
         printIncomeCategory();
