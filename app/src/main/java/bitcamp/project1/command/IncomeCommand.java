@@ -2,7 +2,6 @@ package bitcamp.project1.command;
 
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.vo.Category;
-import bitcamp.project1.vo.Expense;
 import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Income;
 
@@ -25,11 +24,11 @@ public class IncomeCommand {
             case "등록":
                 this.addIncome();
                 break;
-            case "목록":
-                this.listIncome();
-                break;
             case "조회":
                 this.viewIncome();
+                break;
+            case "목록":
+                this.listIncome();
                 break;
             case "변경":
                 this.updateIncome();
@@ -66,19 +65,10 @@ public class IncomeCommand {
         System.out.println("등록되었습니다.");
     }
 
-    private void listIncome() {
-        System.out.println("번호 카테고리 금액 날짜");
-        for (Object obj : incomeList.toArray()) {
-            Income income = (Income) obj;
-            System.out.printf("%d  %s   %d  %s \n", income.getNo(), income.getCategory().getTitle(),
-                    income.getAmount(), income.getDate());
-        }
-    }
-
     private void viewIncome() {
         String incomeDate = Prompt.input("날짜?");
 
-        if (isValidateLength(incomeDate) == false || printIcomeByDate(incomeDate) == 0) {
+        if (isValidateLength(incomeDate) == false || printIncomeDate(incomeDate) == 0) {
             return;
         }
 
@@ -101,22 +91,28 @@ public class IncomeCommand {
             System.out.printf("항목: %s\n", income.getContent());
         }
     }
-
+    private void listIncome(){
+        System.out.println("번호 날짜 금액 분류 항목");
+        for (Object obj : incomeList.toArray()) {
+            Income income = (Income) obj;
+            System.out.printf("%d %s %s %s %s\n", income.getNo(), income.getDate(), income.getAmount(), income.getCategory().getTitle(),income.getContent());
+        }
+    }
     private void updateIncome() {
         String incomeDate = Prompt.input("날짜?");
 
-        if (isValidateLength(incomeDate) == false || printIcomeByDate(incomeDate) == 0) {
+        if (isValidateLength(incomeDate) == false || printIncomeDate(incomeDate) == 0) {
             return;
         }
 
         while (true) {
-            int incomeNo = Prompt.inputInt("번호(0은 이전)?");
-            if (incomeNo == 0) {
+            int incomeNO = Prompt.inputInt("번호(0은 이전)?");
+            if (incomeNO == 0) {
                 return;
             }
 
             Income oldIncome =
-                    (Income) incomeList.get(incomeList.indexOf(new Income(incomeNo, incomeDate)));
+                    (Income) incomeList.get(incomeList.indexOf(new Income(incomeNO, incomeDate)));
             Income newIncome = new Income();
             if (oldIncome == null) {
                 System.out.println("없는 수입입니다.");
@@ -146,7 +142,7 @@ public class IncomeCommand {
     private void deleteIncome() {
         String incomeDate = Prompt.input("날짜?");
 
-        if (isValidateLength(incomeDate) == false || printIcomeByDate(incomeDate) == 0) {
+        if (isValidateLength(incomeDate) == false || printIncomeDate(incomeDate) == 0) {
             return;
         }
 
@@ -172,7 +168,7 @@ public class IncomeCommand {
         return incomeList;
     }
 
-    private int printIcomeByDate(String incomeDate) {
+    private int printIncomeDate(String incomeDate) {
         int count = 0;
         for (Object obj : incomeList.toArray()) {
             Income income = (Income) obj;
@@ -208,4 +204,5 @@ public class IncomeCommand {
         }
         return true;
     }
+
 }

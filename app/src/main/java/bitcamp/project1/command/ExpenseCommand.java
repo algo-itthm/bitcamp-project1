@@ -10,9 +10,6 @@ public class ExpenseCommand {
     LinkedList expenseList = new LinkedList();
     LinkedList categoryList;
 
-    public ExpenseCommand() {
-
-    }
     public ExpenseCommand(CategoryCommand categoryCommand) {
         this.categoryCommand = categoryCommand;
     }
@@ -46,7 +43,14 @@ public class ExpenseCommand {
         }
 
         Expense expense = new Expense();
-        expense.setDate(Prompt.input("날짜?"));
+
+        String date = Prompt.input("날짜?");
+        while(date.length() != 8) {
+            System.out.println("8자리로 입력해주세요.");
+            date = Prompt.input("날짜?");
+        }
+        expense.setDate(date);
+
         expense.setAmount(Prompt.inputInt("금액?"));
 
         printExpenseCategory();
@@ -65,11 +69,11 @@ public class ExpenseCommand {
     }
 
     private void listExpense() {
-        System.out.println("번호 카테고리 금액 날짜");
+        System.out.println("번호 날짜 금액 카테고리");
         for (Object obj : expenseList.toArray()) {
             Expense expense = (Expense) obj;
-            System.out.printf("%d %s %d %s \n", expense.getNo(), expense.getCategory().getTitle(),
-                expense.getAmount(), expense.getDate());
+            System.out.printf("%d %s %,d원 %s \n", expense.getNo(), expense.getDate(),
+                expense.getAmount(), expense.getCategory().getTitle());
         }
     }
 

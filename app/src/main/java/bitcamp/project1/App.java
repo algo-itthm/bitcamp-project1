@@ -16,7 +16,7 @@ public class App {
     CategoryCommand categoryCommand = new CategoryCommand();
     IncomeCommand incomeCommand = new IncomeCommand(categoryCommand);
     ExpenseCommand expenseCommand = new ExpenseCommand(categoryCommand);
-    StatisticsCommand statisticsCommand = new StatisticsCommand(incomeCommand.getIncomeList(), expenseCommand.getExpenseList());
+    StatisticsCommand statisticsCommand = new StatisticsCommand(incomeCommand.getIncomeList(), expenseCommand.getExpenseList(), categoryCommand);
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
     String[][] subMenus = {
@@ -29,7 +29,6 @@ public class App {
     public static void main(String[] args) {
         new App().execute();
     }
-
 
     void execute() {
         printMenu();

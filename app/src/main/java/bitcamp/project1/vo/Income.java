@@ -11,6 +11,7 @@ public class Income {
     private String content; // 항목
     private static int seqNo;
     private Category category;
+
     public static int getSeqNo() {
         return ++seqNo;
     }
