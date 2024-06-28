@@ -120,7 +120,7 @@ public class StatisticsCommand {
       Income income = (Income) obj;
       if (income.getDate().startsWith(date)) {
         System.out.printf("%s %s %s %,d원\n",
-            income.getDate(), "수입", "테스트", income.getAmount());
+            income.getDate(), income.getCategory().getTitle(), income.getContent(), income.getAmount());
       }
     }
   }
@@ -143,7 +143,7 @@ public class StatisticsCommand {
       Expense expense = (Expense) obj;
       if (expense.getDate().startsWith(date)) {
         System.out.printf("%s %s %s %,d원\n",
-            expense.getDate(), "지출", expense.getCategory().getTitle(), expense.getAmount());
+            expense.getDate(), expense.getCategory().getTitle(), expense.getCategory().getTitle(), expense.getAmount());
       }
     }
   }
