@@ -103,12 +103,10 @@ public class CategoryCommand {
 
     for (Object obj : categoryList.toArray()) {
       Category category = (Category) obj;
-      if (category.getTransactionType().equals("수입")) {
+      if (category.getTransactionType().equals("지출")) {
         expenseCategoryList.add(category);
       }
     }
     return expenseCategoryList;
   }
-
-
 }

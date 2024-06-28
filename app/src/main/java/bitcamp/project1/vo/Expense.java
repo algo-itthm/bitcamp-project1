@@ -3,6 +3,7 @@ package bitcamp.project1.vo;
 import java.util.Objects;
 
 public class Expense {
+  private static int seqNo;
   private int no;
   private String date;
   private int amount;
@@ -17,8 +18,6 @@ public class Expense {
     this.no = no;
     this.date = date;
   }
-
-  private static int seqNo;
 
   public static int getNextSeqNo() {
     return ++seqNo;
