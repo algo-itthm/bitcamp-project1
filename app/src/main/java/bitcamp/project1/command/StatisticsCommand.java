@@ -10,7 +10,6 @@ public class StatisticsCommand {
 
   LinkedList incomeList;
   LinkedList expenseList;
-  LinkedList categoryList;
 
   public StatisticsCommand(LinkedList expenseList) {
 //    this.incomeList = incomeList;

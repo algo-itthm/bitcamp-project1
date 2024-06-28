@@ -42,7 +42,8 @@ public class ExpenseCommand {
         expense.setAmount(Prompt.inputInt("금액?"));
 
         printExpenseCategory();
-        Category category = (Category) categoryList.get(Prompt.inputInt("분류?") - 1);
+        int categoryIndex = Prompt.inputInt("분류?") - 1;
+        Category category = (Category) categoryList.get(categoryIndex);
         if(category == null) {
             System.out.println("없는 카테고리입니다.");
             return;
@@ -106,7 +107,8 @@ public class ExpenseCommand {
             newExpense.setAmount(Prompt.inputInt("금액(%,d원)?", oldExpense.getAmount()));
 
             printExpenseCategory();
-            Category category = (Category) categoryList.get(Prompt.inputInt("분류(%s)?", oldExpense.getCategory().getTitle()) - 1);
+            int categoryIndex = Prompt.inputInt("분류(%s)?", oldExpense.getCategory().getTitle()) - 1;
+            Category category = (Category) categoryList.get(categoryIndex);
             if(category == null) {
                 System.out.println("없는 카테고리입니다.");
                 return;
