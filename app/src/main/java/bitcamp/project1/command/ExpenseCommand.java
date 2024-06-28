@@ -43,7 +43,14 @@ public class ExpenseCommand {
         }
 
         Expense expense = new Expense();
-        expense.setDate(Prompt.input("날짜?"));
+
+        String date = Prompt.input("날짜?");
+        while(date.length() != 8) {
+            System.out.println("8자리로 입력해주세요.");
+            date = Prompt.input("날짜?");
+        }
+        expense.setDate(date);
+
         expense.setAmount(Prompt.inputInt("금액?"));
 
         printExpenseCategory();
