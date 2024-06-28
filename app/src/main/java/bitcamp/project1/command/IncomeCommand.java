@@ -47,7 +47,6 @@ public class IncomeCommand {
 
         Income income = new Income();
         income.setDate(Prompt.input("날짜?"));
-
         income.setAmount(Prompt.inputInt("금액?"));
 
         printIncomeCategory();
@@ -204,5 +203,4 @@ public class IncomeCommand {
         }
         return true;
     }
-
 }
