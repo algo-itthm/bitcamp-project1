@@ -143,7 +143,7 @@ public class StatisticsCommand {
       Expense expense = (Expense) obj;
       if (expense.getDate().startsWith(date)) {
         System.out.printf("%s %s %s %,d원\n",
-            expense.getDate(), expense.getCategory().getTitle(), expense.getCategory().getTitle(), expense.getAmount());
+            expense.getDate(), expense.getCategory().getTitle(), expense.getContent(), expense.getAmount());
       }
     }
   }
