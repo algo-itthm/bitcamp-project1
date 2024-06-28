@@ -49,7 +49,7 @@ public class StatisticsCommand {
 
     for(int i = 0; i < incomeList.size(); i++) {
       Income income = (Income) incomeList.get(i);
-      int index = incomeCategoryList.indexOf(income.getCategories());
+      int index = incomeCategoryList.indexOf(income.getCategory());
       sumPerIncomeCategory[index][0]++;
       sumPerIncomeCategory[index][1] += income.getAmount();
       incomeSum += income.getAmount();
