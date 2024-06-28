@@ -109,4 +109,10 @@ public class CategoryCommand {
     }
     return expenseCategoryList;
   }
+
+  public LinkedList getCategoryList() {
+    return this.categoryList;
+  }
+
+
 }
