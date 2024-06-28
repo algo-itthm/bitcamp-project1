@@ -39,7 +39,7 @@ public class StatisticsCommand {
     }
   }
 
-  public void getTransactionByCategory() {
+  private void getTransactionByCategory() {
     LinkedList incomeCategoryList = categoryCommand.getIncomeCategoryList();
     LinkedList expenseCategoryList = categoryCommand.getExpenseCategoryList();
     int[][] sumPerIncomeCategory = new int[incomeCategoryList.size()][2];
@@ -63,11 +63,7 @@ public class StatisticsCommand {
       expenseSum += expense.getAmount();
     }
 
-    System.out.printf("총수입 : %,d원\n", incomeSum);
-    System.out.printf("총지출 : %,d원\n", expenseSum);
-    System.out.printf("합계 : %,d원\n", incomeSum - expenseSum);
-    System.out.println("-------------------------");
-    System.out.println("구분 카테고리 건수 금액 (비중)");
+    printHeaders(incomeSum, expenseSum, "구분 카테고리 건수 금액 (비중)");
 
     if(incomeSum == 0) {
       incomeSum = 1;
@@ -88,7 +84,7 @@ public class StatisticsCommand {
     }
   }
 
-  public void getTransactionThisMonth() {
+  private void getTransactionThisMonth() {
     LocalDateTime now = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
     String thisMonth = now.format(formatter);
@@ -96,17 +92,13 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(thisMonth);
     int expenseSum = getExpenseSum(thisMonth);
 
-    System.out.printf("총수입 : %,d원\n", incomeSum);
-    System.out.printf("총지출 : %,d원\n", expenseSum);
-    System.out.printf("합계 : %,d원\n", incomeSum - expenseSum);
-    System.out.println("-------------------------");
-    System.out.println("일자 구분 항목 금액");
+    printHeaders(incomeSum, expenseSum, "일자 구분 항목 금액");
 
     printIncomeByDate(thisMonth);
     printExpenseByDate(thisMonth);
   }
 
-  public void getTransactionByPeriod(String format, int len) {
+  private void getTransactionByPeriod(String format, int len) {
     String date = Prompt.input(format);
 
     while(date.length() != len) {
@@ -117,17 +109,13 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(date);
     int expenseSum = getExpenseSum(date);
 
-    System.out.printf("총수입 : %,d원\n", incomeSum);
-    System.out.printf("총지출 : %,d원\n", expenseSum);
-    System.out.printf("합계 : %,d원\n", incomeSum - expenseSum);
-    System.out.println("-------------------------");
-    System.out.println("일자 구분 항목 금액");
+    printHeaders(incomeSum, expenseSum, "일자 구분 항목 금액");
 
     printIncomeByDate(date);
     printExpenseByDate(date);
   }
 
-  public void printIncomeByDate(String date) {
+  private void printIncomeByDate(String date) {
     for (Object obj : incomeList.toArray()) {
       Income income = (Income) obj;
       if (income.getDate().startsWith(date)) {
@@ -137,7 +125,7 @@ public class StatisticsCommand {
     }
   }
 
-  public int getIncomeSum(String date) {
+  private int getIncomeSum(String date) {
     int sum = 0;
 
     for (Object obj : incomeList.toArray()) {
@@ -150,7 +138,7 @@ public class StatisticsCommand {
     return sum;
   }
 
-  public void printExpenseByDate(String date) {
+  private void printExpenseByDate(String date) {
     for (Object obj : expenseList.toArray()) {
       Expense expense = (Expense) obj;
       if (expense.getDate().startsWith(date)) {
@@ -160,7 +148,7 @@ public class StatisticsCommand {
     }
   }
 
-  public int getExpenseSum(String date) {
+  private int getExpenseSum(String date) {
     int sum = 0;
 
     for (Object obj : expenseList.toArray()) {
@@ -171,5 +159,13 @@ public class StatisticsCommand {
     }
 
     return sum;
+  }
+
+  private void printHeaders(int incomeSum, int expenseSum, String titles) {
+    System.out.printf("총수입 : %,d원\n", incomeSum);
+    System.out.printf("총지출 : %,d원\n", expenseSum);
+    System.out.printf("합계 : %,d원\n", incomeSum - expenseSum);
+    System.out.println("-------------------------");
+    System.out.println(titles);
   }
 }
