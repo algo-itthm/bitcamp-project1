@@ -6,18 +6,20 @@ import bitcamp.project1.vo.Category;
 import bitcamp.project1.vo.Expense;
 
 public class ExpenseCommand {
+    CategoryCommand categoryCommand;
     LinkedList expenseList = new LinkedList();
     LinkedList categoryList;
 
     public ExpenseCommand() {
 
     }
-    public ExpenseCommand(LinkedList categoryList) {
-        this.categoryList = categoryList;
+    public ExpenseCommand(CategoryCommand categoryCommand) {
+        this.categoryCommand = categoryCommand;
     }
 
     public void executeExpenseCommand(String command) {
         System.out.printf("[%s]\n", command);
+        categoryList = categoryCommand.getExpenseCategoryList();
         switch (command) {
             case "등록":
                 this.addExpense();
@@ -39,8 +41,12 @@ public class ExpenseCommand {
         expense.setDate(Prompt.input("날짜?"));
         expense.setAmount(Prompt.inputInt("금액?"));
 
-        printCategory();
-        Category category = (Category) categoryList.get(Prompt.inputInt("분류?"));
+        printExpenseCategory();
+        Category category = (Category) categoryList.get(Prompt.inputInt("분류?") - 1);
+        if(category == null) {
+            System.out.println("없는 카테고리입니다.");
+            return;
+        }
         expense.setCategory(category);
 
         expense.setContent(Prompt.input("항목?"));
@@ -52,7 +58,7 @@ public class ExpenseCommand {
     private void viewExpense() {
         String expenseDate = Prompt.input("날짜?");
 
-        if (printExpensesByDate(expenseDate) == 0) {
+        if (isValidateLength(expenseDate) == false || printExpensesByDate(expenseDate) == 0) {
             return;
         }
 
@@ -71,7 +77,7 @@ public class ExpenseCommand {
 
             System.out.printf("날짜: %s\n", expense.getDate());
             System.out.printf("금액: %,d원\n", expense.getAmount());
-            System.out.printf("분류: %s\n", "테스트");
+            System.out.printf("분류: %s\n", expense.getCategory().getTitle());
             System.out.printf("항목: %s\n", expense.getContent());
         }
     }
@@ -79,7 +85,7 @@ public class ExpenseCommand {
     private void updateExpense() {
         String expenseDate = Prompt.input("날짜?");
 
-        if (printExpensesByDate(expenseDate) == 0) {
+        if (isValidateLength(expenseDate) == false || printExpensesByDate(expenseDate) == 0) {
             return;
         }
 
@@ -89,16 +95,29 @@ public class ExpenseCommand {
                 return;
             }
 
-            Expense expense =
+            Expense oldExpense =
                 (Expense) expenseList.get(expenseList.indexOf(new Expense(expenseNo, expenseDate)));
-            if (expense == null) {
+            Expense newExpense = new Expense();
+            if (oldExpense == null) {
                 System.out.println("없는 지출입니다.");
                 return;
             }
 
-            expense.setAmount(Prompt.inputInt("금액(%,d원)?", expense.getAmount()));
-            //    expense.setCategory(Prompt.input("분류(%s)?", expense.getCategory()));
-            expense.setContent(Prompt.input("항목(%s)?", expense.getContent()));
+            newExpense.setAmount(Prompt.inputInt("금액(%,d원)?", oldExpense.getAmount()));
+
+            printExpenseCategory();
+            Category category = (Category) categoryList.get(Prompt.inputInt("분류(%s)?", oldExpense.getCategory().getTitle()) - 1);
+            if(category == null) {
+                System.out.println("없는 카테고리입니다.");
+                return;
+            }
+            newExpense.setCategory(category);
+            newExpense.setContent(Prompt.input("항목(%s)?", oldExpense.getContent()));
+
+            oldExpense.setAmount(newExpense.getAmount());
+            oldExpense.setCategory(newExpense.getCategory());
+            oldExpense.setContent(newExpense.getContent());
+
             System.out.println("변경 했습니다.");
         }
     }
@@ -106,7 +125,7 @@ public class ExpenseCommand {
     private void deleteExpense() {
         String expenseDate = Prompt.input("날짜?");
 
-        if (printExpensesByDate(expenseDate) == 0) {
+        if (isValidateLength(expenseDate) == false || printExpensesByDate(expenseDate) == 0) {
             return;
         }
 
@@ -142,7 +161,7 @@ public class ExpenseCommand {
                 }
                 count++;
                 System.out.printf("%d %s %,d원\n",
-                    expense.getNo(), "테스트", expense.getAmount());
+                    expense.getNo(), expense.getCategory().getTitle(), expense.getAmount());
             }
         }
 
@@ -153,12 +172,19 @@ public class ExpenseCommand {
         return count;
     }
 
-    private void printCategory() {
+    private void printExpenseCategory() {
+        int count = 1;
         for (Object obj : categoryList.toArray()) {
             Category category = (Category) obj;
-            if(category.getTransactionType().equals("지출")) {
-                System.out.printf("%d. %s\n", category.getNo(), category.getTitle());
-            }
+            System.out.printf("%d. %s\n", count++, category.getTitle());
         }
+    }
+
+    private boolean isValidateLength(String expenseDate) {
+        if(expenseDate.length() != 8) {
+            System.out.println("8자리로 입력하세요.");
+            return false;
+        }
+        return true;
     }
 }
