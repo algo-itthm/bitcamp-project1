@@ -24,6 +24,9 @@ public class ExpenseCommand {
             case "등록":
                 this.addExpense();
                 break;
+            case "목록":
+                this.listExpense();
+                break;
             case "조회":
                 this.viewExpense();
                 break;
@@ -59,6 +62,15 @@ public class ExpenseCommand {
         expense.setNo(Expense.getNextSeqNo());
         expenseList.add(expense);
         System.out.println("등록되었습니다.");
+    }
+
+    private void listExpense() {
+        System.out.println("번호 카테고리 금액 날짜");
+        for (Object obj : expenseList.toArray()) {
+            Expense expense = (Expense) obj;
+            System.out.printf("%d %s %d %s \n", expense.getNo(), expense.getCategory().getTitle(),
+                expense.getAmount(), expense.getDate());
+        }
     }
 
     private void viewExpense() {
