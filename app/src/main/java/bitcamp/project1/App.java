@@ -13,7 +13,8 @@ import org.checkerframework.checker.units.qual.C;
 public class App {
     ExpenseCommand expenseCommand = new ExpenseCommand();
     CategoryCommand categoryCommand = new CategoryCommand();
-    IncomeCommand incomeCommand = new IncomeCommand();
+    IncomeCommand incomeCommand = new IncomeCommand(categoryCommand.getIncomeCategoryList());
+
     StatisticsCommand statisticsCommand = new StatisticsCommand(expenseCommand.getExpenseList());
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};

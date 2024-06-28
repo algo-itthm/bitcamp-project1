@@ -1,14 +1,16 @@
 package bitcamp.project1.vo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Income {
     private int no;
-    private String date; //날짜
-    private int amount; //금액
-    private Category category; //분류
-    private String content; //항목
+    private String date; // 날짜
+    private int amount; // 금액
+    private String content; // 항목
     private static int seqNo;
+    private List<Category> categories = new ArrayList<>(); // 카테고리 리스트
 
     public static int getSeqNo() {
         return ++seqNo;
@@ -18,9 +20,7 @@ public class Income {
         Income.seqNo = seqNo;
     }
 
-    public Income() {
-
-    }
+    public Income() {}
 
     public Income(int no) {
         this.no = no;
@@ -63,14 +63,6 @@ public class Income {
         this.amount = amount;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public String getContent() {
         return content;
     }
@@ -78,6 +70,11 @@ public class Income {
     public void setContent(String content) {
         this.content = content;
     }
+    public List<Category> getCategories() {
+        return categories;
+    }
 
-
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 }

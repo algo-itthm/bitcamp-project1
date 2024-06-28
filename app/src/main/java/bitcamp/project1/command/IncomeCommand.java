@@ -10,7 +10,14 @@ public class IncomeCommand {
 
     LinkedList incomeList = new LinkedList();
     LinkedList categoryList;
+
+    public IncomeCommand(LinkedList category) {
+        this.categoryList =  category;
+    }
+
     public void executeIncomeCommand(String command) {
+
+
         System.out.printf("[%s]\n", command);
 
         switch (command) {
@@ -29,16 +36,13 @@ public class IncomeCommand {
         }
     }
 
-
     public void addIncome() {
         Income income = new Income();
         income.setDate(Prompt.input("날짜?"));
         income.setAmount(Prompt.inputInt("금액?"));
-
-//        income.setCategory(Prompt.input("분류?"));
-
+        addCategories(income);
         income.setContent(Prompt.input("항목?"));
-        income.setNo(income.getSeqNo());
+        income.setNo(Expense.getNextSeqNo());
         incomeList.add(income);
         System.out.println("등록했습니다.");
     }
@@ -55,7 +59,7 @@ public class IncomeCommand {
                 }
                 count++;
                 System.out.printf("%d %s %d\n",
-                        income.getNo(), "항목", income.getAmount());
+                        income.getNo(), income.getContent(), income.getAmount());
             }
         }
 
@@ -77,12 +81,15 @@ public class IncomeCommand {
             }
 
             System.out.printf("날짜: %s\n", income.getDate());
-            System.out.printf("금액: %s\n", income.getAmount());
-            System.out.printf("분류: %s\n", "테스트");
+            System.out.printf("금액: %d\n", income.getAmount());
+            System.out.print("분류: ");
+            for (Category category : income.getCategories()) {
+                System.out.printf("%s ", category.getTitle());
+            }
+            System.out.println();
             System.out.printf("항목: %s\n", income.getContent());
         }
     }
-
 
     public void updateIncome() {
         String incomeDate = Prompt.input("날짜?");
@@ -95,7 +102,7 @@ public class IncomeCommand {
                 }
                 count++;
                 System.out.printf("%d %s %d\n",
-                        income.getNo(), "항목", income.getAmount());
+                        income.getNo(), income.getContent(), income.getAmount());
             }
         }
         if (count == 0) {
@@ -115,8 +122,8 @@ public class IncomeCommand {
                 return;
             }
 
-            income.setAmount(Prompt.inputInt("금액(%s)?", income.getAmount()));
-//    income.setCategory(Prompt.input("분류(%s)?", income.getCategory()));
+            income.setAmount(Prompt.inputInt("금액(%d)원?", income.getAmount()));
+            addCategories(income);
             income.setContent(Prompt.input("항목(%s)?", income.getContent()));
             System.out.println("변경 했습니다.");
         }
@@ -133,7 +140,7 @@ public class IncomeCommand {
                 }
                 count++;
                 System.out.printf("%d %s %d\n",
-                        income.getNo(), "항목", income.getAmount());
+                        income.getNo(), income.getContent(), income.getAmount());
             }
         }
         if (count == 0) {
@@ -152,31 +159,42 @@ public class IncomeCommand {
                 return;
             }
 
-            if (deletedIncome != null) {
-                incomeList.remove(incomeList.indexOf(deletedIncome));
-                System.out.printf("%d번 수입을 삭제 했습니다.\n", deletedIncome.getNo());
-            } else {
-                System.out.println("없는 수입입니다.");
-            }
+            incomeList.remove(incomeList.indexOf(deletedIncome));
+            System.out.printf("%d번 수입을 삭제 했습니다.\n", deletedIncome.getNo());
         }
-//    }
-//    private void addCategory(Income income) {
-//        while (true) {
-//            int categoryNo = Prompt.inputInt("추가할 카테고리 번호?(종료:0)");
-//            if (categoryNo == 0) {
-//                break;
-//            }
-//            Category category = (Category) categoryList.get(categoryList.indexOf(new Category(categoryNo)));
-//            if (category == null) {
-//                System.out.println("없는 팀원입니다.");
-//                continue;
-//            }
-//            if (income.getCategory().contains(category)) {
-//                System.out.printf("%s 은 현재 카테고리입니다.\n", category.getTitle());
-//                continue;
-//            }
-//            income.getCategory().add(category);
-//            System.out.printf("%s 을 추가했습니다.\n", category.getTitle());
-//        }
+    }
+
+    public LinkedList getIncomeList() {
+        return incomeList;
+    }
+
+    private void addCategories(Income income) {
+        for (Object obj : categoryList.toArray()) {
+            Category category = (Category) obj;
+            System.out.printf("%d %s %s\n",
+                    category.getNo(), category.getTitle(), category.getTransactionType());
+        }
+        while (true) {
+            int categoryNo = Prompt.inputInt("추가할 카테고리 번호?(종료:0)");
+            if (categoryNo == 0) {
+                break;
+            }
+            Category category = (Category) categoryList.get(categoryList.indexOf(new Category(categoryNo)));
+            if (category == null) {
+                System.out.println("없는 카테고리입니다.");
+                continue;
+            }
+
+            if (income.getCategories().contains(category)) {
+                System.out.printf("%s 은 현재 카테고리입니다.\n", category.getTitle());
+                continue;
+            }else{
+                income.getCategories().clear();
+                income.getCategories().add(category);
+                System.out.printf("%s 을 추가했습니다.\n", category.getTitle());
+                break;
+            }
+
+        }
     }
 }
