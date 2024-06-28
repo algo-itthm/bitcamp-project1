@@ -9,6 +9,7 @@ import bitcamp.project1.command.StatisticsCommand;
 import bitcamp.project1.command.IncomeCommand;
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
+import bitcamp.project1.vo.Category;
 import org.checkerframework.checker.units.qual.C;
 
 public class App {
@@ -31,6 +32,16 @@ public class App {
 
     void execute() {
         printMenu();
+
+        Category category1 = new Category(1, "식비", "지출");
+        Category category2 = new Category(2, "공과금", "지출");
+        Category category3 = new Category(3, "월급", "수입");
+        Category category4 = new Category(4, "용돈", "수입");
+
+        categoryCommand.getCategoryList().add(category1);
+        categoryCommand.getCategoryList().add(category2);
+        categoryCommand.getCategoryList().add(category3);
+        categoryCommand.getCategoryList().add(category4);
 
         String command;
         while (true) {

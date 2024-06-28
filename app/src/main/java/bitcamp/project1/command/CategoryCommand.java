@@ -78,6 +78,7 @@ public class CategoryCommand {
   }
 
   private void addCategory() {
+
     Category category = new Category();
     category.setTitle(Prompt.input("카테고리명?"));
     category.setNo(Category.getNextSeqNo());
@@ -109,4 +110,10 @@ public class CategoryCommand {
     }
     return expenseCategoryList;
   }
+
+  public LinkedList getCategoryList() {
+    return this.categoryList;
+  }
+
+
 }

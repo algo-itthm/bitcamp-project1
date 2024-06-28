@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Category {
 
-    private static int seqNo;
+    private static int seqNo = 4;
 
     private int no;
     private String title;
@@ -17,6 +17,12 @@ public class Category {
 
     public Category(int no) {
         this.no = no;
+    }
+
+    public Category(int no, String title, String transactionType) {
+        this.no = no;
+        this.title = title;
+        this.transactionType = transactionType;
     }
 
     public static int getNextSeqNo() {
