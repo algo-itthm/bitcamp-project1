@@ -1,5 +1,6 @@
 package bitcamp.project1.command;
 
+import bitcamp.project1.util.Highlight;
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Category;
@@ -15,7 +16,7 @@ public class ExpenseCommand {
     }
 
     public void executeExpenseCommand(String command) {
-        System.out.printf("[%s]\n", command);
+        Highlight.menuHighlight(command, "blue");
         categoryList = categoryCommand.getExpenseCategoryList();
         switch (command) {
             case "등록":
