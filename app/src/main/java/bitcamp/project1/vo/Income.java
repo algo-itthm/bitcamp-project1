@@ -10,7 +10,7 @@ public class Income {
     private int amount; // 금액
     private String content; // 항목
     private static int seqNo;
-    private Category category;
+    private List<Category> categories = new ArrayList<>(); // 카테고리 리스트
 
     public static int getSeqNo() {
         return ++seqNo;
@@ -22,9 +22,8 @@ public class Income {
 
     public Income() {}
 
-    public Income(int no, String date) {
+    public Income(int no) {
         this.no = no;
-        this.date = date;
     }
 
     @Override
@@ -71,12 +70,11 @@ public class Income {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }

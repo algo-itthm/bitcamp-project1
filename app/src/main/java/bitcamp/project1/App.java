@@ -14,9 +14,9 @@ import org.checkerframework.checker.units.qual.C;
 
 public class App {
     CategoryCommand categoryCommand = new CategoryCommand();
-    IncomeCommand incomeCommand = new IncomeCommand(categoryCommand);
+    IncomeCommand incomeCommand = new IncomeCommand(categoryCommand.getIncomeCategoryList());
     ExpenseCommand expenseCommand = new ExpenseCommand(categoryCommand);
-    StatisticsCommand statisticsCommand = new StatisticsCommand(incomeCommand.getIncomeList(), expenseCommand.getExpenseList(), categoryCommand);
+    StatisticsCommand statisticsCommand = new StatisticsCommand(incomeCommand.getIncomeList(), expenseCommand.getExpenseList());
 
     String[] mainMenus = new String[]{"수입", "지출", "카테고리", "조회", "종료"};
     String[][] subMenus = {
@@ -29,6 +29,7 @@ public class App {
     public static void main(String[] args) {
         new App().execute();
     }
+
 
     void execute() {
         printMenu();

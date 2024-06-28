@@ -2,7 +2,6 @@ package bitcamp.project1.command;
 
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
-import bitcamp.project1.vo.Category;
 import bitcamp.project1.vo.Expense;
 import bitcamp.project1.vo.Income;
 
@@ -13,12 +12,10 @@ public class StatisticsCommand {
 
   LinkedList incomeList;
   LinkedList expenseList;
-  CategoryCommand categoryCommand;
 
-  public StatisticsCommand(LinkedList incomeList, LinkedList expenseList, CategoryCommand categoryCommand) {
+  public StatisticsCommand(LinkedList incomeList, LinkedList expenseList) {
     this.incomeList = incomeList;
     this.expenseList = expenseList;
-    this.categoryCommand = categoryCommand;
   }
 
   public void executeExpenseCommand(String command) {
@@ -40,70 +37,25 @@ public class StatisticsCommand {
   }
 
   public void getTransactionByCategory() {
-    LinkedList incomeCategoryList = categoryCommand.getIncomeCategoryList();
-    LinkedList expenseCategoryList = categoryCommand.getExpenseCategoryList();
-    int[][] sumPerIncomeCategory = new int[incomeCategoryList.size()][2];
-    int[][] sumPerExpenseCategory = new int[expenseCategoryList.size()][2];
-    int incomeSum = 0;
-    int expenseSum = 0;
-
-    for(int i = 0; i < incomeList.size(); i++) {
-      Income income = (Income) incomeList.get(i);
-      int index = incomeCategoryList.indexOf(income.getCategory());
-      sumPerIncomeCategory[index][0]++;
-      sumPerIncomeCategory[index][1] += income.getAmount();
-      incomeSum += income.getAmount();
-    }
-
-    for(int i = 0; i < expenseList.size(); i++) {
-      Expense expense = (Expense) expenseList.get(i);
-      int index = expenseCategoryList.indexOf(expense.getCategory());
-      sumPerExpenseCategory[index][0]++;
-      sumPerExpenseCategory[index][1] += expense.getAmount();
-      expenseSum += expense.getAmount();
-    }
-
-    System.out.printf("총수입 : %,d원\n", incomeSum);
-    System.out.printf("총지출 : %,d원\n", expenseSum);
-    System.out.printf("합계 : %,d원\n", incomeSum - expenseSum);
-    System.out.println("-------------------------");
-    System.out.println("구분 카테고리 건수 금액 (비중)");
-
-    if(incomeSum == 0) {
-      incomeSum = 1;
-    }
-    if(expenseSum == 0) {
-      expenseSum = 1;
-    }
-
-    for(int i = 0; i < incomeCategoryList.size(); i++) {
-      Category category = (Category) incomeCategoryList.get(i);
-      System.out.printf("수입 %s %d건 %,d원 (%.1f%%)\n", category.getTitle(), sumPerIncomeCategory[i][0],
-          sumPerIncomeCategory[i][1], (double) sumPerIncomeCategory[i][1] / incomeSum * 100);
-    }
-    for(int i = 0; i < expenseCategoryList.size(); i++) {
-      Category category = (Category) expenseCategoryList.get(i);
-      System.out.printf("지출 %s %d건 %,d원 (%.1f%%)\n", category.getTitle(), sumPerExpenseCategory[i][0],
-          sumPerExpenseCategory[i][1], (double) sumPerExpenseCategory[i][1] / expenseSum * 100);
-    }
+    System.out.println("카테고리별 조회입니다.");
   }
 
   public void getTransactionThisMonth() {
     LocalDateTime now = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
-    String thisMonth = now.format(formatter);
+    String formattedNow = now.format(formatter);
 
-    int incomeSum = getIncomeSum(thisMonth);
-    int expenseSum = getExpenseSum(thisMonth);
+    int incomeSum = getIncomeSum(formattedNow);
+    int expenseSum = getExpenseSum(formattedNow);
 
-    System.out.printf("총수입 : %,d원\n", incomeSum);
-    System.out.printf("총지출 : %,d원\n", expenseSum);
-    System.out.printf("합계 : %,d원\n", incomeSum - expenseSum);
+    System.out.printf("총수입 : %d원\n", incomeSum);
+    System.out.printf("총지출 : %d원\n", expenseSum);
+    System.out.printf("합계 : %d원\n", incomeSum - expenseSum);
     System.out.println("-------------------------");
     System.out.println("일자 구분 항목 금액");
 
-    printIncomeByDate(thisMonth);
-    printExpenseByDate(thisMonth);
+    printIncomeByDate(formattedNow);
+    printExpenseByDate(formattedNow);
   }
 
   public void getTransactionByPeriod(String format, int len) {

@@ -10,6 +10,9 @@ public class ExpenseCommand {
     LinkedList expenseList = new LinkedList();
     LinkedList categoryList;
 
+    public ExpenseCommand() {
+
+    }
     public ExpenseCommand(CategoryCommand categoryCommand) {
         this.categoryCommand = categoryCommand;
     }
