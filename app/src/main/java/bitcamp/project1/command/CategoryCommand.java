@@ -86,7 +86,7 @@ public class CategoryCommand {
     categoryList.add(category);
   }
 
-  public Object[] getIncomeCategoryList() {
+  public LinkedList getIncomeCategoryList() {
     LinkedList incomeCategoryList = new LinkedList();
 
     for (Object obj : categoryList.toArray()) {
@@ -95,10 +95,10 @@ public class CategoryCommand {
         incomeCategoryList.add(category);
       }
     }
-    return incomeCategoryList.toArray();
+    return incomeCategoryList;
   }
 
-  public Object[] getExpenseCategoryList() {
+  public LinkedList getExpenseCategoryList() {
     LinkedList expenseCategoryList = new LinkedList();
 
     for (Object obj : categoryList.toArray()) {
@@ -107,6 +107,6 @@ public class CategoryCommand {
         expenseCategoryList.add(category);
       }
     }
-    return expenseCategoryList.toArray();
+    return expenseCategoryList;
   }
 }
