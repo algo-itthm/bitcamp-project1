@@ -1,5 +1,6 @@
 package bitcamp.project1.command;
 
+import bitcamp.project1.util.Highlight;
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Category;
@@ -10,7 +11,7 @@ public class CategoryCommand {
 
 
   public void executeCategoryCommand(String command) {
-    System.out.printf("[%s]\n", command);
+    Highlight.menuHighlight(command, "blue");
     switch (command) {
       case "등록":
         this.addCategory();

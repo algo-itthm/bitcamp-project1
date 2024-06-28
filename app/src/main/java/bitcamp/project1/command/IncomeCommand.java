@@ -1,5 +1,6 @@
 package bitcamp.project1.command;
 
+import bitcamp.project1.util.Highlight;
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.vo.Category;
 import bitcamp.project1.util.Prompt;
@@ -18,7 +19,7 @@ public class IncomeCommand {
     }
 
     public void executeIncomeCommand(String command) {
-        System.out.printf("[%s]\n", command);
+        Highlight.menuHighlight(command, "blue");
         categoryList = categoryCommand.getIncomeCategoryList();
         switch (command) {
             case "등록":

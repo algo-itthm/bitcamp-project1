@@ -7,6 +7,7 @@ import bitcamp.project1.command.CategoryCommand;
 import bitcamp.project1.command.ExpenseCommand;
 import bitcamp.project1.command.StatisticsCommand;
 import bitcamp.project1.command.IncomeCommand;
+import bitcamp.project1.util.Highlight;
 import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Category;
@@ -95,7 +96,7 @@ public class App {
     }
 
     void printSubMenu(String menuTitle, String[] menus) {
-        System.out.printf("[%s]\n", menuTitle);
+        Highlight.menuHighlight(menuTitle, "yellow");
         for (int i = 0; i < menus.length; i++) {
             System.out.printf("%d. %s\n", (i + 1), menus[i]);
         }
