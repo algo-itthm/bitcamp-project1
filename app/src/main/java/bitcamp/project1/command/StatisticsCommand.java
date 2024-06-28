@@ -64,7 +64,7 @@ public class StatisticsCommand {
       expenseSum += expense.getAmount();
     }
 
-    printHeaders(incomeSum, expenseSum, "구분    카테고리    건수    금액 (비중)");
+    printHeaders(incomeSum, expenseSum, "\033[1m구분    카테고리    건수    금액 (비중)\033[0m");
 
     if(incomeSum == 0) {
       incomeSum = 1;
@@ -93,7 +93,7 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(thisMonth);
     int expenseSum = getExpenseSum(thisMonth);
 
-    printHeaders(incomeSum, expenseSum, "일자        구분        항목        금액");
+    printHeaders(incomeSum, expenseSum, "\033[1m일자        구분        항목        금액\033[0m");
 
     printIncomeByDate(thisMonth);
     printExpenseByDate(thisMonth);
@@ -110,7 +110,7 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(date);
     int expenseSum = getExpenseSum(date);
 
-    printHeaders(incomeSum, expenseSum, "일자        구분        항목        금액");
+    printHeaders(incomeSum, expenseSum, "\033[1m일자        구분        항목        금액\033[0m");
 
     printIncomeByDate(date);
     printExpenseByDate(date);
@@ -120,7 +120,7 @@ public class StatisticsCommand {
     for (Object obj : incomeList.toArray()) {
       Income income = (Income) obj;
       if (income.getDate().startsWith(date)) {
-        System.out.printf("%s\t%s\t\t%s\t\t-%,d원\n",
+        System.out.printf("%s\t%s\t\t%s\t\t+%,d원\n",
             income.getDate(), income.getCategory().getTitle(), income.getContent(), income.getAmount());
       }
     }
@@ -143,7 +143,7 @@ public class StatisticsCommand {
     for (Object obj : expenseList.toArray()) {
       Expense expense = (Expense) obj;
       if (expense.getDate().startsWith(date)) {
-        System.out.printf("%s %s\t\t%s\t\t-%,d원\n",
+        System.out.printf("%s\t%s\t\t%s\t\t-%,d원\n",
             expense.getDate(), expense.getCategory().getTitle(), expense.getContent(), expense.getAmount());
       }
     }
@@ -166,7 +166,6 @@ public class StatisticsCommand {
     System.out.printf("\t\t\t  총수입 : %,d원\n", incomeSum);
     System.out.printf("\t\t\t  총지출 : %,d원\n", expenseSum);
     System.out.printf("\t\t\t  합계   : %,d원\n", incomeSum - expenseSum);
-    System.out.println("-----------------------------------------------");
     System.out.println(titles);
   }
 }

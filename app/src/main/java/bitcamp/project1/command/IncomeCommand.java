@@ -99,10 +99,10 @@ public class IncomeCommand {
         }
     }
     private void listIncome(){
-        System.out.println("번호 날짜 금액 분류 항목");
+        System.out.println("번호  날짜\t\t금액\t\t분류\t항목");
         for (Object obj : incomeList.toArray()) {
             Income income = (Income) obj;
-            System.out.printf("%d %s %s %s %s\n", income.getNo(), income.getDate(), income.getAmount(), income.getCategory().getTitle(),income.getContent());
+            System.out.printf("%d\t  %s\t%,d원\t%s\t%s\n", income.getNo(), income.getDate(), income.getAmount(), income.getCategory().getTitle(),income.getContent());
         }
     }
     private void updateIncome() {
@@ -181,10 +181,10 @@ public class IncomeCommand {
             Income income = (Income) obj;
             if (income.getDate().equals(incomeDate)) {
                 if (count == 0) {
-                    System.out.println("번호 항목 금액");
+                    System.out.println("번호\t항목\t\t금액");
                 }
                 count++;
-                System.out.printf("%d %s %,d원\n",
+                System.out.printf("%d\t\t%s\t\t%,d원\n",
                         income.getNo(), income.getCategory().getTitle(), income.getAmount());
             }
         }

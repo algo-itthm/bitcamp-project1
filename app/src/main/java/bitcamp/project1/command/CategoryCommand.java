@@ -70,10 +70,10 @@ public class CategoryCommand {
   }
 
   private void listCategory() {
-    System.out.println("번호 카테고리명 수입/지출");
+    System.out.println("번호\t카테고리명\t수입/지출");
     for (Object obj : categoryList.toArray()) {
       Category category = (Category) obj;
-      System.out.printf("%d %s %s\n",
+      System.out.printf("%d\t\t%s\t\t%s\n",
           category.getNo(), category.getTitle(), category.getTransactionType());
     }
   }

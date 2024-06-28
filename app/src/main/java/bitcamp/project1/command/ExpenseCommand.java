@@ -70,10 +70,10 @@ public class ExpenseCommand {
     }
 
     private void listExpense() {
-        System.out.println("번호 날짜 금액 분류 항목");
+        System.out.println("번호  날짜\t\t금액\t\t분류\t항목");
         for (Object obj : expenseList.toArray()) {
             Expense expense = (Expense) obj;
-            System.out.printf("%d %s %,d원 %s %s\n", expense.getNo(), expense.getDate(),
+            System.out.printf("%d\t  %s\t%,d원\t%s\t%s\n", expense.getNo(), expense.getDate(),
                 expense.getAmount(), expense.getCategory().getTitle(), expense.getContent());
         }
     }
@@ -181,10 +181,10 @@ public class ExpenseCommand {
             Expense expense = (Expense) obj;
             if (expense.getDate().equals(expenseDate)) {
                 if (count == 0) {
-                    System.out.println("번호 항목 금액");
+                    System.out.println("번호\t항목\t\t금액");
                 }
                 count++;
-                System.out.printf("%d %s %,d원\n",
+                System.out.printf("%d\t\t%s\t\t%,d원\n",
                     expense.getNo(), expense.getCategory().getTitle(), expense.getAmount());
             }
         }
