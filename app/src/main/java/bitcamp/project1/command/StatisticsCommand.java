@@ -63,7 +63,7 @@ public class StatisticsCommand {
       expenseSum += expense.getAmount();
     }
 
-    printHeaders(incomeSum, expenseSum, "구분 카테고리 건수 금액 (비중)");
+    printHeaders(incomeSum, expenseSum, "구분    카테고리    건수    금액 (비중)");
 
     if(incomeSum == 0) {
       incomeSum = 1;
@@ -74,12 +74,12 @@ public class StatisticsCommand {
 
     for(int i = 0; i < incomeCategoryList.size(); i++) {
       Category category = (Category) incomeCategoryList.get(i);
-      System.out.printf("수입 %s %d건 %,d원 (%.1f%%)\n", category.getTitle(), sumPerIncomeCategory[i][0],
+      System.out.printf("수입\t%s\t\t%d건\t\t%,d원 (%.1f%%)\n", category.getTitle(), sumPerIncomeCategory[i][0],
           sumPerIncomeCategory[i][1], (double) sumPerIncomeCategory[i][1] / incomeSum * 100);
     }
     for(int i = 0; i < expenseCategoryList.size(); i++) {
       Category category = (Category) expenseCategoryList.get(i);
-      System.out.printf("지출 %s %d건 %,d원 (%.1f%%)\n", category.getTitle(), sumPerExpenseCategory[i][0],
+      System.out.printf("지출\t%s\t\t%d건\t\t%,d원 (%.1f%%)\n", category.getTitle(), sumPerExpenseCategory[i][0],
           sumPerExpenseCategory[i][1], (double) sumPerExpenseCategory[i][1] / expenseSum * 100);
     }
   }
@@ -92,7 +92,7 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(thisMonth);
     int expenseSum = getExpenseSum(thisMonth);
 
-    printHeaders(incomeSum, expenseSum, "일자 구분 항목 금액");
+    printHeaders(incomeSum, expenseSum, "일자        구분        항목        금액");
 
     printIncomeByDate(thisMonth);
     printExpenseByDate(thisMonth);
@@ -109,7 +109,7 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(date);
     int expenseSum = getExpenseSum(date);
 
-    printHeaders(incomeSum, expenseSum, "일자 구분 항목 금액");
+    printHeaders(incomeSum, expenseSum, "일자        구분        항목        금액");
 
     printIncomeByDate(date);
     printExpenseByDate(date);
@@ -119,8 +119,8 @@ public class StatisticsCommand {
     for (Object obj : incomeList.toArray()) {
       Income income = (Income) obj;
       if (income.getDate().startsWith(date)) {
-        System.out.printf("%-10s %-5s %-8s %,d원\n",
-            income.getDate(), "수입", "테스트", income.getAmount());
+        System.out.printf("%s\t%s\t\t%s\t\t-%,d원\n",
+            income.getDate(), income.getCategory().getTitle(), income.getContent(), income.getAmount());
       }
     }
   }
@@ -142,8 +142,8 @@ public class StatisticsCommand {
     for (Object obj : expenseList.toArray()) {
       Expense expense = (Expense) obj;
       if (expense.getDate().startsWith(date)) {
-        System.out.printf("%-10s %-6s %-10s %,10d원\n",
-            expense.getDate(), "지출", expense.getCategory().getTitle(), expense.getAmount());
+        System.out.printf("%s %s\t\t%s\t\t-%,d원\n",
+            expense.getDate(), expense.getCategory().getTitle(), expense.getContent(), expense.getAmount());
       }
     }
   }
@@ -162,10 +162,10 @@ public class StatisticsCommand {
   }
 
   private void printHeaders(int incomeSum, int expenseSum, String titles) {
-    System.out.printf("         총수입 : %,d원\n", incomeSum);
-    System.out.printf("         총지출 : %,d원\n", expenseSum);
-    System.out.printf("         합계   : %,d원\n", incomeSum - expenseSum);
-    System.out.println("-----------------------------------");
+    System.out.printf("\t\t\t  총수입 : %,d원\n", incomeSum);
+    System.out.printf("\t\t\t  총지출 : %,d원\n", expenseSum);
+    System.out.printf("\t\t\t  합계   : %,d원\n", incomeSum - expenseSum);
+    System.out.println("-----------------------------------------------");
     System.out.println(titles);
   }
 }
