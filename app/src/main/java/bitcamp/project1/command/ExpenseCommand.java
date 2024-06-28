@@ -69,11 +69,11 @@ public class ExpenseCommand {
     }
 
     private void listExpense() {
-        System.out.println("번호 카테고리 금액 날짜");
+        System.out.println("번호 날짜 금액 카테고리");
         for (Object obj : expenseList.toArray()) {
             Expense expense = (Expense) obj;
-            System.out.printf("%d %s %d %s \n", expense.getNo(), expense.getCategory().getTitle(),
-                expense.getAmount(), expense.getDate());
+            System.out.printf("%d %s %,d원 %s \n", expense.getNo(), expense.getDate(),
+                expense.getAmount(), expense.getCategory().getTitle());
         }
     }
 
