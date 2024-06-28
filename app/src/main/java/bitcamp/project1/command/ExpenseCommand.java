@@ -37,6 +37,11 @@ public class ExpenseCommand {
     }
 
     private void addExpense() {
+        if(categoryList.size() == 0) {
+            System.out.println("카테고리 등록이 필요합니다.");
+            return;
+        }
+
         Expense expense = new Expense();
         expense.setDate(Prompt.input("날짜?"));
         expense.setAmount(Prompt.inputInt("금액?"));
