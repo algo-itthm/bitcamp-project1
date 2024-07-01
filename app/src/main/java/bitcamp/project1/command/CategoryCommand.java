@@ -85,7 +85,13 @@ public class CategoryCommand {
     Category category = new Category();
     category.setTitle(Prompt.input("카테고리명?"));
     category.setNo(Category.getNextSeqNo());
-    category.setTransactionType(Prompt.input("수입/지출?"));
+    String categoryInput = Prompt.input("수입/지출?");
+    if (categoryInput.equals("수입") || categoryInput.equals("지출")) {
+      category.setTransactionType(categoryInput);
+    }else{
+      System.out.println("수입/지출 중 하나를 선택해주세요.");
+      return;
+    }
 
     categoryList.add(category);
   }
