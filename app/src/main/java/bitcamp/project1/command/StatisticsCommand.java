@@ -173,14 +173,15 @@ public class StatisticsCommand {
 
   public static String getTabByString(String str) {
     int count = 0;
+    int len = str.length();
     Pattern pattern = Pattern.compile("[\uAC00-\uD7A3]");
     Matcher matcher = pattern.matcher(str);
     while (matcher.find()) {
       count++;
     }
-    if(count >= 4) {
+    if(len + count >= 8) {
       return "\t";
-    } else if(count == 1) {
+    } else if(len + count < 4) {
       return "\t\t\t";
     } else {
       return "\t\t";
