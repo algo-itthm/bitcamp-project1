@@ -121,9 +121,11 @@ public class StatisticsCommand {
   private void printIncomeByDate(String date) {
     for (Object obj : incomeList.toArray()) {
       Income income = (Income) obj;
+      String category = income.getCategory().getTitle();
+      String content = income.getContent();
       if (income.getDate().startsWith(date)) {
-        System.out.printf("%s\t%s\t\t%s%s+%,d원\n",
-            income.getDate(), income.getCategory().getTitle(), income.getContent(), getTabByString(income.getContent()), income.getAmount());
+        System.out.printf("%s\t%s%s%s%s+%,d원\n",
+            income.getDate(), category, getTabByString(category), content, getTabByString(content), income.getAmount());
       }
     }
   }
@@ -144,9 +146,11 @@ public class StatisticsCommand {
   private void printExpenseByDate(String date) {
     for (Object obj : expenseList.toArray()) {
       Expense expense = (Expense) obj;
+      String category = expense.getCategory().getTitle();
+      String content = expense.getContent();
       if (expense.getDate().startsWith(date)) {
-        System.out.printf("%s\t%s\t\t%s%s-%,d원\n",
-            expense.getDate(), expense.getCategory().getTitle(), expense.getContent(), getTabByString(expense.getContent()), expense.getAmount());
+        System.out.printf("%s\t%s%s%s%s-%,d원\n",
+            expense.getDate(), category, getTabByString(category), content, getTabByString(content), expense.getAmount());
       }
     }
   }

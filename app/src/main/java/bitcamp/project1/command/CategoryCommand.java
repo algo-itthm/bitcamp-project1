@@ -5,6 +5,9 @@ import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Category;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CategoryCommand {
 
   LinkedList categoryList = new LinkedList();
@@ -73,8 +76,8 @@ public class CategoryCommand {
     System.out.println("번호\t카테고리명\t수입/지출");
     for (Object obj : categoryList.toArray()) {
       Category category = (Category) obj;
-      System.out.printf("%d\t\t%s\t\t%s\n",
-          category.getNo(), category.getTitle(), category.getTransactionType());
+      System.out.printf("%d\t\t%s%s%s\n",
+          category.getNo(), category.getTitle(), getTabByString(category.getTitle()), category.getTransactionType());
     }
   }
 
@@ -115,5 +118,20 @@ public class CategoryCommand {
     return this.categoryList;
   }
 
-
+  public static String getTabByString(String str) {
+    int count = 0;
+    int len = str.length();
+    Pattern pattern = Pattern.compile("[\uAC00-\uD7A3]");
+    Matcher matcher = pattern.matcher(str);
+    while (matcher.find()) {
+      count++;
+    }
+    if(len + count >= 8) {
+      return "\t";
+    } else if(len + count < 4) {
+      return "\t\t\t";
+    } else {
+      return "\t\t";
+    }
+  }
 }
