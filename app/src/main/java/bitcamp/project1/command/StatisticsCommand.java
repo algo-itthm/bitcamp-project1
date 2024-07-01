@@ -9,6 +9,8 @@ import bitcamp.project1.vo.Income;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StatisticsCommand {
 
@@ -93,7 +95,7 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(thisMonth);
     int expenseSum = getExpenseSum(thisMonth);
 
-    printHeaders(incomeSum, expenseSum, "\033[1m일자        구분        항목        금액\033[0m");
+    printHeaders(incomeSum, expenseSum, "\033[1m날짜        구분        항목        금액\033[0m");
 
     printIncomeByDate(thisMonth);
     printExpenseByDate(thisMonth);
@@ -110,7 +112,7 @@ public class StatisticsCommand {
     int incomeSum = getIncomeSum(date);
     int expenseSum = getExpenseSum(date);
 
-    printHeaders(incomeSum, expenseSum, "\033[1m일자        구분        항목        금액\033[0m");
+    printHeaders(incomeSum, expenseSum, "\033[1m날짜        구분        항목        금액\033[0m");
 
     printIncomeByDate(date);
     printExpenseByDate(date);
@@ -120,8 +122,8 @@ public class StatisticsCommand {
     for (Object obj : incomeList.toArray()) {
       Income income = (Income) obj;
       if (income.getDate().startsWith(date)) {
-        System.out.printf("%s\t%s\t\t%s\t\t+%,d원\n",
-            income.getDate(), income.getCategory().getTitle(), income.getContent(), income.getAmount());
+        System.out.printf("%s\t%s\t\t%s%s+%,d원\n",
+            income.getDate(), income.getCategory().getTitle(), income.getContent(), getTabByString(income.getContent()), income.getAmount());
       }
     }
   }
@@ -143,8 +145,8 @@ public class StatisticsCommand {
     for (Object obj : expenseList.toArray()) {
       Expense expense = (Expense) obj;
       if (expense.getDate().startsWith(date)) {
-        System.out.printf("%s\t%s\t\t%s\t\t-%,d원\n",
-            expense.getDate(), expense.getCategory().getTitle(), expense.getContent(), expense.getAmount());
+        System.out.printf("%s\t%s\t\t%s%s-%,d원\n",
+            expense.getDate(), expense.getCategory().getTitle(), expense.getContent(), getTabByString(expense.getContent()), expense.getAmount());
       }
     }
   }
@@ -167,5 +169,21 @@ public class StatisticsCommand {
     System.out.printf("\t\t\t  총지출 : %,d원\n", expenseSum);
     System.out.printf("\t\t\t  합계   : %,d원\n", incomeSum - expenseSum);
     System.out.println(titles);
+  }
+
+  public static String getTabByString(String str) {
+    int count = 0;
+    Pattern pattern = Pattern.compile("[\uAC00-\uD7A3]");
+    Matcher matcher = pattern.matcher(str);
+    while (matcher.find()) {
+      count++;
+    }
+    if(count >= 4) {
+      return "\t";
+    } else if(count == 1) {
+      return "\t\t\t";
+    } else {
+      return "\t\t";
+    }
   }
 }
