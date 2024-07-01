@@ -77,12 +77,12 @@ public class StatisticsCommand {
 
     for(int i = 0; i < incomeCategoryList.size(); i++) {
       Category category = (Category) incomeCategoryList.get(i);
-      System.out.printf("수입\t%s\t\t%d건\t\t%,d원 (%.1f%%)\n", category.getTitle(), sumPerIncomeCategory[i][0],
+      System.out.printf("수입\t%s%s%d건\t\t%,d원 (%.1f%%)\n", category.getTitle(), getTabByString(category.getTitle()), sumPerIncomeCategory[i][0],
           sumPerIncomeCategory[i][1], (double) sumPerIncomeCategory[i][1] / incomeSum * 100);
     }
     for(int i = 0; i < expenseCategoryList.size(); i++) {
       Category category = (Category) expenseCategoryList.get(i);
-      System.out.printf("지출\t%s\t\t%d건\t\t%,d원 (%.1f%%)\n", category.getTitle(), sumPerExpenseCategory[i][0],
+      System.out.printf("지출\t%s%s%d건\t\t%,d원 (%.1f%%)\n", category.getTitle(), getTabByString(category.getTitle()), sumPerExpenseCategory[i][0],
           sumPerExpenseCategory[i][1], (double) sumPerExpenseCategory[i][1] / expenseSum * 100);
     }
   }
