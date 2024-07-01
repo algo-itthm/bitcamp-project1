@@ -6,6 +6,9 @@ import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Category;
 import bitcamp.project1.vo.Expense;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ExpenseCommand {
     CategoryCommand categoryCommand;
     LinkedList expenseList = new LinkedList();
@@ -70,11 +73,11 @@ public class ExpenseCommand {
     }
 
     private void listExpense() {
-        System.out.println("번호  날짜\t\t금액\t\t분류\t항목");
+        System.out.println("번호  날짜\t\t금액\t\t분류\t\t항목");
         for (Object obj : expenseList.toArray()) {
             Expense expense = (Expense) obj;
-            System.out.printf("%d\t  %s\t%,-6d원\t%s\t%s\n", expense.getNo(), expense.getDate(),
-                expense.getAmount(), expense.getCategory().getTitle(), expense.getContent());
+            System.out.printf("%d\t  %s\t%,-6d원\t%s%s%s\n", expense.getNo(), expense.getDate(),
+                expense.getAmount(), expense.getCategory().getTitle(), getTabByString(expense.getCategory().getTitle()), expense.getContent());
         }
     }
 
@@ -184,8 +187,9 @@ public class ExpenseCommand {
                     System.out.println("번호\t항목\t\t금액");
                 }
                 count++;
-                System.out.printf("%d\t\t%s\t\t%,d원\n",
-                    expense.getNo(), expense.getCategory().getTitle(), expense.getAmount());
+                System.out.printf("%d\t\t%s%s%,d원\n",
+                    expense.getNo(), expense.getCategory().getTitle(),
+                    getTabByString(expense.getCategory().getTitle()), expense.getAmount());
             }
         }
 
@@ -210,5 +214,22 @@ public class ExpenseCommand {
             return false;
         }
         return true;
+    }
+
+    public static String getTabByString(String str) {
+        int count = 0;
+        int len = str.length();
+        Pattern pattern = Pattern.compile("[\uAC00-\uD7A3]");
+        Matcher matcher = pattern.matcher(str);
+        while (matcher.find()) {
+            count++;
+        }
+        if(len + count >= 8) {
+            return "\t";
+        } else if(len + count < 4) {
+            return "\t\t\t";
+        } else {
+            return "\t\t";
+        }
     }
 }
