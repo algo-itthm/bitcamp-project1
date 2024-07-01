@@ -73,7 +73,7 @@ public class ExpenseCommand {
         System.out.println("번호  날짜\t\t금액\t\t분류\t항목");
         for (Object obj : expenseList.toArray()) {
             Expense expense = (Expense) obj;
-            System.out.printf("%d\t  %s\t%,d원\t%s\t%s\n", expense.getNo(), expense.getDate(),
+            System.out.printf("%d\t  %s\t%,-6d원\t%s\t%s\n", expense.getNo(), expense.getDate(),
                 expense.getAmount(), expense.getCategory().getTitle(), expense.getContent());
         }
     }

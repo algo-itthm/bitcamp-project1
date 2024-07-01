@@ -102,7 +102,7 @@ public class IncomeCommand {
         System.out.println("번호  날짜\t\t금액\t\t분류\t항목");
         for (Object obj : incomeList.toArray()) {
             Income income = (Income) obj;
-            System.out.printf("%d\t  %s\t%,d원\t%s\t%s\n", income.getNo(), income.getDate(), income.getAmount(), income.getCategory().getTitle(),income.getContent());
+            System.out.printf("%d\t  %s\t%,-6d원\t%s\t%s\n", income.getNo(), income.getDate(), income.getAmount(), income.getCategory().getTitle(),income.getContent());
         }
     }
     private void updateIncome() {

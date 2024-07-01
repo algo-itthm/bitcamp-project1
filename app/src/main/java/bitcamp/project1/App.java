@@ -8,10 +8,8 @@ import bitcamp.project1.command.ExpenseCommand;
 import bitcamp.project1.command.StatisticsCommand;
 import bitcamp.project1.command.IncomeCommand;
 import bitcamp.project1.util.Highlight;
-import bitcamp.project1.util.LinkedList;
 import bitcamp.project1.util.Prompt;
 import bitcamp.project1.vo.Category;
-import org.checkerframework.checker.units.qual.C;
 
 public class App {
     CategoryCommand categoryCommand = new CategoryCommand();
