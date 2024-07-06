@@ -15,7 +15,7 @@
 https://velog.io/@luna7182/%EB%B0%B1%EC%97%94%EB%93%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-README-%EC%93%B0%EB%8A%94-%EB%B2%95
  -->
 
----
+
 
 # 시작 가이드
 
@@ -36,7 +36,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 <!-- Backend, Frontend -->
 
 
----
+
 
 # 기술 스택
 <!-- https://github.com/Ileriayo/markdown-badges?tab=readme-ov-file#badges -->
@@ -53,7 +53,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 ![KakaoTalk](https://img.shields.io/badge/kakaotalk-ffcd00.svg?style=for-the-badge&logo=kakaotalk&logoColor=000000)
 <!-- 상황에 따라 config, test, deploy 등 추가 -->
 
----
+
 
 # 화면 구성
 
@@ -66,7 +66,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 ### 조회 상세 페이지
 ![img_2.png](README_images/statistics.png)
 
----
+
 
 # 주요 기능
 
