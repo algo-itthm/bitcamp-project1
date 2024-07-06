@@ -16,7 +16,7 @@ https://velog.io/@luna7182/%EB%B0%B1%EC%97%94%EB%93%9C-%ED%94%84%EB%A1%9C%EC%A0%
  -->
 
 
-#
+<br><br>
 # 시작 가이드
 
 ### Requirements
@@ -37,7 +37,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 
 
 
-#
+<br><br>
 # 기술 스택
 <!-- https://github.com/Ileriayo/markdown-badges?tab=readme-ov-file#badges -->
 
@@ -54,7 +54,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 <!-- 상황에 따라 config, test, deploy 등 추가 -->
 
 
-#
+<br><br>
 # 화면 구성
 
 ### 메인 페이지
@@ -67,7 +67,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 ![img_2.png](README_images/statistics.png)
 
 
-#
+<br><br>
 # 주요 기능
 
 ### 수입, 지출 및 카테고리 관리
