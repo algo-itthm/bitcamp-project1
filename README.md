@@ -6,9 +6,9 @@
 
 ### 개발팀
 - (NAVER Cloud) 클라우드 기반 웹 데브옵스 프로젝트 개발자 과정 14기
-- 강O상
-- 강O기
-- 이O람
+- 강O기 : 수입
+- 강O상 : 지출, 조회
+- 이O람 : 카테고리, TUI
 
 <!-- 
   프로젝트 로고, 배포 주소
@@ -61,7 +61,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 ![img.png](README_images/main.png)
 
 ### 수입, 지출, 카테고리 상세 페이지
-![img_1.png](README_images/Income, Expense, Category.png)
+![img_1.png](README_images/IncomeExpenseCategory.png)
 
 ### 조회 상세 페이지
 ![img_2.png](README_images/statistics.png)
