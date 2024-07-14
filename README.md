@@ -7,8 +7,8 @@
 ### 개발팀
 - (NAVER Cloud) 클라우드 기반 웹 데브옵스 프로젝트 개발자 과정 14기
 - 공통 : 설계, 테스트, 리팩터링
-- chocolithm (algo-itthm) : 지출, 조회
 - backnback : 카테고리, TUI
+- chocolithm (algo-itthm) : 지출, 조회
 - seulki-k : 수입
 
 <!-- 
