@@ -7,9 +7,9 @@
 ### 개발팀
 - (NAVER Cloud) 클라우드 기반 웹 데브옵스 프로젝트 개발자 과정 14기
 - 공통 : 설계, 테스트, 리팩터링
-- 강O기 : 수입
-- 강O상 : 지출, 조회
-- 이O람 : 카테고리, TUI
+- chocolithm (algo-itthm) : 지출, 조회
+- backnback : 카테고리, TUI
+- seulki-k : 수입
 
 <!-- 
   프로젝트 로고, 배포 주소
@@ -25,7 +25,7 @@ https://velog.io/@luna7182/%EB%B0%B1%EC%97%94%EB%93%9C-%ED%94%84%EB%A1%9C%EC%A0%
 
 ### Installation
 ```
-$ git clone "https://github.com/algo-itthm/bitcamp-project1"
+$ git clone "https://github.com/chocolithm/bitcamp-project1"
 $ cd bitcamp-project1
 ```
 
