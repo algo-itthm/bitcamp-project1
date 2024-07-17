@@ -56,6 +56,7 @@ $ java -cp app/bin/main bitcamp.project1.App
 
 <br><br>
 # 프로젝트 구조
+<pre>
 📦src
 ┣ 📂main
 ┃ ┣ 📂java
@@ -87,6 +88,8 @@ $ java -cp app/bin/main bitcamp.project1.App
 ┃ ┃ ┃ ┃ ┗ 📜AppTest.java
 ┃ ┗ 📂resources
 ┃ ┃ ┗ 📜README.md
+</pre>
+
 
 
 
