@@ -59,13 +59,13 @@ $ java -cp app/bin/main bitcamp.project1.App
 # 화면 구성
 
 ### 메인 페이지
-![img.png](README_images/main.png)
+<img src="README_images/main.png">
 
 ### 수입, 지출, 카테고리 상세 페이지
-![img_1.png](README_images/IncomeExpenseCategory.png)
+<img src="README_images/IncomeExpenseCategory.png">
 
 ### 조회 상세 페이지
-![img_2.png](README_images/statistics.png)
+<img src="README_images/statistics.png">
 
 
 <br><br>
