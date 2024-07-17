@@ -54,6 +54,43 @@ $ java -cp app/bin/main bitcamp.project1.App
 ![KakaoTalk](https://img.shields.io/badge/kakaotalk-ffcd00.svg?style=for-the-badge&logo=kakaotalk&logoColor=000000)
 <!-- 상황에 따라 config, test, deploy 등 추가 -->
 
+<br><br>
+# 프로젝트 구조
+📦src
+┣ 📂main
+┃ ┣ 📂java
+┃ ┃ ┗ 📂bitcamp
+┃ ┃ ┃ ┗ 📂project1
+┃ ┃ ┃ ┃ ┣ 📂command
+┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryCommand.java
+┃ ┃ ┃ ┃ ┃ ┣ 📜ExpenseCommand.java
+┃ ┃ ┃ ┃ ┃ ┣ 📜IncomeCommand.java
+┃ ┃ ┃ ┃ ┃ ┗ 📜StatisticsCommand.java
+┃ ┃ ┃ ┃ ┣ 📂util
+┃ ┃ ┃ ┃ ┃ ┣ 📜AbstractList.java
+┃ ┃ ┃ ┃ ┃ ┣ 📜Highlight.java
+┃ ┃ ┃ ┃ ┃ ┣ 📜LinkedList.java
+┃ ┃ ┃ ┃ ┃ ┣ 📜List.java
+┃ ┃ ┃ ┃ ┃ ┗ 📜Prompt.java
+┃ ┃ ┃ ┃ ┣ 📂vo
+┃ ┃ ┃ ┃ ┃ ┣ 📜Category.java
+┃ ┃ ┃ ┃ ┃ ┣ 📜Expense.java
+┃ ┃ ┃ ┃ ┃ ┗ 📜Income.java
+┃ ┃ ┃ ┃ ┣ 📜App.java
+┃ ┃ ┃ ┃ ┗ 📜Test1.java
+┃ ┗ 📂resources
+┃ ┃ ┗ 📜README.md
+┗ 📂test
+┃ ┣ 📂java
+┃ ┃ ┗ 📂bitcamp
+┃ ┃ ┃ ┗ 📂project1
+┃ ┃ ┃ ┃ ┗ 📜AppTest.java
+┃ ┗ 📂resources
+┃ ┃ ┗ 📜README.md
+
+
+
+
 
 <br><br>
 # 주요 기능
